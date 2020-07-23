@@ -24,7 +24,6 @@ const initalFormErrors = {
 }
 
 const initialTeam = []
-
 const initialDisabled = true
 
 function App() {
@@ -36,7 +35,7 @@ function App() {
 
 const inputChange = (name, value) => {
   yup
-  .reach(schema, name)
+  .reach(formSchema, name)
   .validate(value)
   .then(valid => {
     setErrors({
@@ -55,7 +54,6 @@ const inputChange = (name, value) => {
     [name]: value
   })
 }
-
 
 const checkboxChange = (name, isChecked) => {
   setForm({
@@ -80,7 +78,7 @@ const checkboxChange = (name, isChecked) => {
       name: form.name.trim(),
       email: form.email.trim(),
       password: form.password.trim(),
-      terms: form.term
+      terms: form.terms
     }
     postNewMember(newMember)
   }
@@ -93,7 +91,7 @@ const checkboxChange = (name, isChecked) => {
 
   return (
     <div className="App">
-      <h1>React app working</h1>
+      <h1>Register new team member</h1>
       <Form submit={submit} values={form} inputChange={inputChange} checkboxChange={checkboxChange} errors={errors} disabled={disabled}/>
 
       {
